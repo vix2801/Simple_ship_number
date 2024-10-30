@@ -1,0 +1,27 @@
+import math
+
+# Constants
+cargo_winter = 4  # units per month in winter
+cargo_summer = 2  # units per month in summer
+cargo_spring_fall = 3  # assumed units per month in spring/fall
+months_winter = 4
+months_summer = 4
+months_spring_fall = 4  # assuming the rest of the months are equally split between spring and fall
+trip_duration_days = 26
+days_per_year = 365
+ship_capacity_per_trip = 1  # units per trip
+
+# Calculations
+trips_per_year = days_per_year / trip_duration_days
+cargo_winter_total = cargo_winter * months_winter
+cargo_summer_total = cargo_summer * months_summer
+cargo_spring_fall_total = cargo_spring_fall * months_spring_fall
+total_annual_demand = cargo_winter_total + cargo_summer_total + cargo_spring_fall_total
+
+# Annual capacity per ship
+annual_capacity_per_ship = ship_capacity_per_trip * trips_per_year
+
+# Number of ships needed
+number_of_ships = math.ceil(total_annual_demand / annual_capacity_per_ship)
+
+number_of_ships
